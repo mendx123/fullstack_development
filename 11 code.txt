@@ -1,0 +1,94 @@
+//Home.js
+
+const Home=()=>{
+   return <h1>Welcome to cmrit Home page</h1>;
+};
+export default Home;
+
+//ContactUs.js
+
+const ContactUs=()=>{
+   return <h1>CMRIT,Kandlakoya,Medchal,Hyd</h1>;
+};
+export default ContactUs;
+
+//Profile.js
+
+const Profile =()=>{
+   return<><h1>Welcome to Ms.Akshitha Arram</h1><p>student,CSE dept</p></>;
+};
+export default Profile;
+
+//index.js
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+//import './index.css';
+//import App from './App';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import reportWebVitals from './reportWebVitals';
+import Layout from './templates/Layout';
+import Home from './templates/Home';
+import Profile from './templates/Profile';
+import ContactUs from './templates/ContactUs';
+
+export default function App() {
+  return (
+    <BrowserRouter>
+    <Routes> 
+      <Route path="/" element ={<Layout/>}>
+      <Route index element={<Home />} />
+      <Route path="profile" element={<Profile />} />
+      <Route path="contactUs" element={<ContactUs />} />
+      </Route>
+    </Routes>
+    </BrowserRouter>
+     
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
+
+
+
+//Layout.js
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import {Outlet} from 'react-router-dom';
+import logo from '../assets/logo.png';
+
+const Layout = () => {
+   return(
+      <>
+         <Navbar bg="primary" data-bs-theme="dark">
+            <Container>
+               <Navbar.Brand href="/">
+               <img alt="" src={logo} width="30" height="30" className="d-inline-block align-top" />{' '}
+               React SPA
+               </Navbar.Brand>
+               <Nav className="me-auto">
+                  <Nav.Link href="/">Home</Nav.Link>
+                  <Nav.Link href="profile">Profile</Nav.Link>
+                  <Nav.Link href="contactUs">ContactUs</Nav.Link>
+               </Nav>
+            </Container>
+         </Navbar> 
+         <Outlet/>
+         
+      </>
+   ); 
+};
+export default Layout;
+
