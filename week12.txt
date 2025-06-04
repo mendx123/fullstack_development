@@ -1,0 +1,8 @@
+1)py --version (or) python --version
+2) create and open a folder in cmd
+3)py -m venv venv
+4)venv\Scripts\activate.bat
+5)pip install django
+6)django-admin startproject first
+7)cd first
+8)python manage.py runserver
